@@ -12,7 +12,8 @@
   "Mysql":
   {
     "UsuarioBD": "root",
-    "PasswordBD": "Lorra",
+    "PasswordBD": "",
+    "DataBase": "Lorra",
     "HostBD" : "127.0.0.1",
     "PortBD" : 3306,
     "Cifrado": "sha1"
