@@ -19,6 +19,7 @@ class Hilo_Cliente():
 
     def enviar(self, data):
         self.socket.send(Cifrados.empaquetar(data))
+        return self.recibir()
 
     def recibir(self):
         return Cifrados.desenpaqueta(self.socket.recv(CANTIDAD_PAQUETES))

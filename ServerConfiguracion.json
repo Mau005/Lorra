@@ -1,0 +1,22 @@
+
+{
+  "Server":
+  {
+    "Mensaje_Bienvenida": "Bienvenidos a mi puto server!",
+    "HostServer": "127.0.0.1",
+    "PortServer": 7171,
+    "Escuchas" : 5,
+    "Personas_Conectadas": 1000
+  },
+
+  "Mysql":
+  {
+    "UsuarioBD": "root",
+    "PasswordBD": "",
+    "DataBase": "Lorra",
+    "HostBD" : "127.0.0.1",
+    "PortBD" : 3306,
+    "Cifrado": "sha1"
+  }
+
+}
