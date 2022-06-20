@@ -12,6 +12,7 @@ from core.Constantes import FPS
 class Lorra(MDApp):
     def __init__(self, **kargs):
         super().__init__(**kargs)
+
         self.manejador = ScreenManager()
         self.login = Login()
         self.juego = Juego(Window.size)

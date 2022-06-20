@@ -27,14 +27,15 @@ class Persona(Entidad):
         self.acceso = acceso
         self.animacion = Animacion(self.manejadorsprite.get_vestimenta(self.vestimenta))
         self.direccion = "derecha"
-        self.enMovimiento = True
+        self.enMovimiento = False
         self.bg = Rectangle(source=self.animacion.get_sprite(), pos=pos, size=size)
 
-    def actualizar(self, *dt):
+    def actualizar(self, teclado,*dt):
         pass
 
     def dibujar(self, canvas, *dt):
         self.animacion.set_direccion(self.direccion)
         self.animacion.dibujar(self.enMovimiento, dt)
         self.bg.source = self.animacion.get_sprite()
+        self.bg.pos = self.pos
         canvas.add(self.bg)
