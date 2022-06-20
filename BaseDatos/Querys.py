@@ -7,8 +7,12 @@ class Querys:
 
 
     def solicitar_ingreso(self, nombre, password):
+        querys = f'SELECT * FROM account WHERE EMAIL = "{nombre}" and PASS = "{password}";'
+        return self.conectorbd.solicitar(querys, 1)
+    def solicitar_ingreso_cifrado(self, nombre, password):
         querys = f'SELECT * FROM account WHERE EMAIL = "{nombre}" and PASS = SHA("{password}");'
         return self.conectorbd.solicitar(querys, 1)
+
 
     def registrar_cuenta(self, nombre, password):
         querys = f'INSERT INTO account VALUES("{nombre}", SHA("{password}"), "{datetime.date.today()}");'
