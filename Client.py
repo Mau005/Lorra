@@ -22,10 +22,10 @@ class Lorra(MDApp):
         Clock.schedule_interval(self.dibujar, 1 / FPS)
 
     def actualizar(self, *dt):
-        self.juego.actualizar(dt)
+        self.juego.actualizar(dt[0])
 
     def dibujar(self, *dt):
-        self.juego.dibujar(*dt) #Deprectad a futuro
+        self.juego.dibujar(dt[0]) #Deprectad a futuro
 
 
     def build(self):
