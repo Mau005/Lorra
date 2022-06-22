@@ -23,13 +23,14 @@ class Animacion(Entidad):
         if direccion == "sur" or direccion == "norte" or direccion == "izquierda" or direccion == "derecha":
             self.direccion = direccion
 
-    def dibujar(self,enMovimiento, *dt):
+    def dibujar(self,enMovimiento, dt, direccion = "sur"):
         """
         Methodo realizado para operar la informacion de la secuencia de imagenes
         :param dt: tiempo transcurrido
         :return:  nothings
         """
         if enMovimiento:
+            self.set_direccion(direccion)
             self.ruta_predefinida = f"{self.ruta_sprite}{self.sprite[self.direccion][self.fps_actual]}"
 
             if self.fps_actual >= len(self.sprite[self.direccion]) - 1:
