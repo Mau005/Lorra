@@ -22,9 +22,11 @@ class Objetos(Entidad):
 
     def actualizar(self, dt):
         self.animacion.actualizar(dt)
+        self.bg.pos = self.pos
 
 
-    def dibujar(self, canvas, dt):
+    def dibujar(self, canvas, size, dt):
+        self.bg.size = size
         if self.enMovimiento:
             self.animacion.dibujar(self.enMovimiento, dt)
             self.bg.source = self.animacion.ruta_predefinida
