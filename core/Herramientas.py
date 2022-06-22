@@ -6,8 +6,11 @@ class Herramientas:
 
     @classmethod
     def cargar_json(cls, path):
-        archivo = open(path, encoding="utf-8")
-        return json.load(archivo)
+        if cls.comprobar_archivo(path):
+            archivo = open(path, encoding="utf-8")
+            return json.load(archivo)
+        print(f"El archivo no existe {path}")
+        return None
 
     @classmethod
     def comprobar_archivo(cls, ruta):
