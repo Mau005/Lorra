@@ -8,7 +8,7 @@ class Animacion(Entidad):
         self.ruta_sprite = self.sprite["ruta"]
 
         self.ruta_predefinida = f"{self.ruta_sprite}{self.sprite['sur'][0]}"
-        self.direccion = "norte"
+        self.direccion = "sur"
         self.fps_actual = 0
         self.cuadro_por_segundo = VELOCIDAD_FPS
         self.control_tiempo = 0.0
