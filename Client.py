@@ -1,7 +1,6 @@
 from kivymd.app import MDApp
 from kivy.uix.screenmanager import ScreenManager
 from kivy.clock import Clock
-from kivy.core.window import Window
 
 from Ventanas.Juego import Juego
 from Ventanas.Login import Login
@@ -15,7 +14,7 @@ class Lorra(MDApp):
 
         self.manejador = ScreenManager()
         self.login = Login()
-        self.juego = Juego(Window.size)
+        self.juego = Juego()
 
         #self.manejador.add_widget(self.login)
         self.manejador.add_widget(self.juego)
@@ -26,7 +25,7 @@ class Lorra(MDApp):
         self.juego.actualizar(dt)
 
     def dibujar(self, *dt):
-        self.juego.dibujar(Window.size,*dt) #Deprectad a futuro
+        self.juego.dibujar(*dt) #Deprectad a futuro
 
 
     def build(self):
