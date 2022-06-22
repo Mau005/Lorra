@@ -1,6 +1,7 @@
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 
-class Entidad():
+
+class Entidad(ABC):
 
     def __init__(self, pos, size):
         self.pos = pos
