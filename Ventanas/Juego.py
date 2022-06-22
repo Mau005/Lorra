@@ -25,7 +25,7 @@ class Juego(MDScreen):
 
     def __actualizar_defecto(self):
         self.tamanio_cuadro = [Window.size[0] / CANTIDAD_ESPACIOS_X, Window.size[1] / CANTIDAD_ESPACIOS_Y]
-        self.pos_defecto = [self.tamanio_cuadro[0] * int(CANTIDAD_ESPACIOS_X / 2) - 77,
+        self.pos_defecto = [self.tamanio_cuadro[0] * int(CANTIDAD_ESPACIOS_X / 2) - int(self.tamanio_cuadro[0]/2) ,
                             self.tamanio_cuadro[1] * int(CANTIDAD_ESPACIOS_Y / 2)]
 
     def __configuracion_ventana(self):
@@ -69,36 +69,31 @@ class Juego(MDScreen):
         # [3] Tecla especial+ tecla
         self.teclado.precionar_tecla(args[1][0])
 
-    def movimiento_jugador(self, dt):
-        velocidad = 85 * dt[0][0]
+    def movimiento_jugador(self, mover, dt):
+        velocidad = 85 * dt[0]
 
         if self.teclado.get_tecla(119):
-            self.jugador.pos[1] += velocidad
-            self.jugador.direccion = "norte"
-            self.jugador.enMovimiento = True
+            self.jugador.caminar(mover, "norte", dt)
         elif self.teclado.get_tecla(115):
-            self.jugador.pos[1] -= velocidad
-            self.jugador.direccion = "sur"
-            self.jugador.enMovimiento = True
+            self.jugador.caminar(mover, "sur", dt)
         elif self.teclado.get_tecla(97):
-            self.jugador.pos[0] -= velocidad
-            self.jugador.direccion = "izquierda"
-            self.jugador.enMovimiento = True
+            self.jugador.caminar(mover, "izquierda", dt)
         elif self.teclado.get_tecla(100):
-            self.jugador.pos[0] += velocidad
-            self.jugador.direccion = "derecha"
-            self.jugador.enMovimiento = True
+            self.jugador.caminar(mover, "derecha", dt)
 
 
     def actualizar(self, *dt):
         self.__actualizar_defecto()
-        self.movimiento_jugador(dt)
         self.jugador.actualizar(dt)
+        self.jugador.pos = self.pos_defecto
         self.objeto1.actualizar(dt)
+        for elementos in self.dibujado_objetos:
+            self.movimiento_jugador(elementos, dt)
+            elementos.actualizar(dt)
 
     def dibujar(self, *dt):
         self.size = Window.size
         self.maya.canvas.clear()
         for elementos in self.dibujado_objetos:
-            elementos.dibujar(self.maya.canvas, dt)
+            elementos.dibujar(self.maya.canvas, self.tamanio_cuadro, dt)
         self.jugador.dibujar(self.maya.canvas, dt)
