@@ -1,6 +1,7 @@
 from Entidad.Entidad import Entidad
 from core.Constantes import VELOCIDAD_RECORRE_FPS, VELOCIDAD_FPS
 
+
 class Animacion(Entidad):
 
     def __init__(self, sprite):
@@ -23,7 +24,10 @@ class Animacion(Entidad):
         if direccion == "sur" or direccion == "norte" or direccion == "izquierda" or direccion == "derecha":
             self.direccion = direccion
 
-    def dibujar(self,enMovimiento, dt, direccion = "sur"):
+    def actualizar(self, *dt):
+        pass
+
+    def dibujar(self, enMovimiento, dt, direccion="sur"):
         """
         Methodo realizado para operar la informacion de la secuencia de imagenes
         :param dt: tiempo transcurrido
@@ -45,7 +49,6 @@ class Animacion(Entidad):
             self.ruta_predefinida = f"{self.ruta_sprite}{self.sprite[self.direccion][0]}"
 
 
-
 if __name__ == "__main__":
     test = {'norte': [1, 2, 3, 4, 5, 6, 7, 8],
             'derecha': [9, 10, 11, 12, 13, 14, 15, 16],
@@ -55,4 +58,3 @@ if __name__ == "__main__":
     anim = Animacion(test)
     while True:
         anim.dibujar(2)
-
