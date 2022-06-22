@@ -44,10 +44,12 @@ class Persona(Entidad):
         elif direccion == "derecha":
             mover.pos[0] -= velocidad
 
-    def actualizar(self, teclado,*dt):
+    def actualizar(self, *dt):
         self.bg.pos = self.pos
 
-    def dibujar(self, canvas, *dt):
+    def dibujar(self, canvas, size, *dt):
+        self.size = size
+        self.bg.size = self.size
         self.animacion.dibujar(self.enMovimiento, dt, direccion=self.direccion)
         self.bg.source = self.animacion.get_sprite()
         canvas.add(self.bg)
