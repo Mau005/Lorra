@@ -11,9 +11,6 @@ class Suelos(Objetos):
         self.colicion = Coliciones(self.pos, size)
 
 
-    def actualizar(self,jugador, pos, size, dt):
+    def actualizar(self, dt):
         super().actualizar(dt)
-        self.pos = pos
-        self.size = size
-        self.colicion.chequear_colicion(jugador)
         self.colicion.actualizar(self.pos, self.size, dt)
