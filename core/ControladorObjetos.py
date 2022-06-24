@@ -4,7 +4,7 @@ class ControladorObjetos:
 
     def __init__(self, path=None):
         if path is None:
-            self.__datos = Herramientas.cargar_json("Data\Objetos\objetos.json")
+            self.__datos = Herramientas.cargar_json("Data/Objetos/objetos.json")
         else:
             self.__datos = Herramientas.cargar_json(path)
 

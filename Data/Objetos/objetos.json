@@ -3,25 +3,25 @@
   "1": {
     "nombre": "Pasto",
     "solido": false,
-    "type": "Suelo",
+    "tipo": "Suelo",
     "accion_id": 0
   },
   "2": {
     "nombre": "Pasto",
     "solido": false,
-    "type": "Suelo",
+    "tipo": "Suelo",
     "accion_id": 0
   },
   "3": {
     "nombre": "Pasto",
     "solido": false,
-    "type": "Suelo",
+    "tipo": "Suelo",
     "accion_id": 0
   },
   "4": {
     "nombre": "Pasto",
     "solido": false,
-    "type": "Suelo",
+    "tipo": "Suelo",
     "accion_id": 0
   }
 }
