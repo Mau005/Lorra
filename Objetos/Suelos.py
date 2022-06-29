@@ -3,8 +3,8 @@ from Coliciones.Coliciones import Coliciones
 
 class Suelos(Objetos):
 
-    def __init__(self,datos, nombre, sprite, pos, size):
-        super().__init__(nombre, sprite, pos, size)
+    def __init__(self,datos, sprite, pos, size):
+        super().__init__(datos.get("nombre"), sprite, pos, size)
         self.solido = datos.get("solido")
         self.tipo = datos.get("tipo")
         self.accion = datos.get("accion_id")

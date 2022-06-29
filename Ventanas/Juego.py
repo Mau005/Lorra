@@ -1,6 +1,7 @@
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.floatlayout import MDFloatLayout
 from Entidad.Persona import Persona
+from Mapa.Mapa import Mapa
 from Sprites.ManejadorSprites import ManejadorSprites
 from kivy.core.window import Window
 from Controles.Teclado import Teclado
@@ -33,27 +34,25 @@ class Juego(MDScreen):
         self.name = "Juego"
         self.maya = MDFloatLayout(size=self.size, size_hint=self.size_hint)
         self.add_widget(self.maya)
-        self.manejadorSprites = ManejadorSprites()
-        self.controladorObjetos = ControladorObjetos()
-        self.jugador = Persona(self.manejadorSprites, 'Mau', 'prueba123', 1, 1, 1, 100, 100, 20, 20, 0, 1, '100:100:1',
-                               1, self.pos_defecto, self.tamanio_cuadro)
 
-        self.render = Render(self.jugador, self.teclado, self.tamanio_cuadro)
 
     def __contenido_canvas(self):
-        self.dibujado_objetos = []
-        objtest = {"solido": False, "tipo": "Suelo", "accion": 0}
-        self.render.registrar(
-            Suelos(objtest, "suelo", self.manejadorSprites.get_objetos(1), [0, 0], self.tamanio_cuadro))
-        self.render.registrar(
-            Suelos(objtest, "suelo", self.manejadorSprites.get_objetos(2), [0, self.tamanio_cuadro[1] * 1],
-                   self.tamanio_cuadro))
-        self.render.registrar(
-            Suelos(objtest, "suelo", self.manejadorSprites.get_objetos(3), [0, self.tamanio_cuadro[1] * 2],
-                   self.tamanio_cuadro))
-        self.render.registrar(
-            Suelos(objtest, "suelo", self.manejadorSprites.get_objetos(5), [0, self.tamanio_cuadro[1] * 3],
-                   self.tamanio_cuadro))
+        self.manejadorSprites = ManejadorSprites()
+        self.controladorObjetos = ControladorObjetos(self.manejadorSprites)
+        self.jugador = Persona(self.manejadorSprites, 'Mau', 1, 10 ,11, 1, self.pos_defecto, self.tamanio_cuadro)
+        self.render = Render(self.jugador, self.teclado, self.tamanio_cuadro)
+        self.mapa = Mapa(100, 100, 4)
+
+        mapa = self.mapa.get_mapa()
+
+        for y in range(len(mapa)):
+            for x in range(len(mapa[y])):
+                for z in range(len(mapa[y][x])):
+                    contenido = mapa[y][x][z]
+                    pos = [x * self.tamanio_cuadro[0], y * self.tamanio_cuadro[1]]
+                    if contenido >= 1:
+                        self.render.registrar(self.controladorObjetos.get_objeto(contenido,pos,self.tamanio_cuadro))
+
 
     def _cerrar_teclado(self, *args):
         print("Se ha cerrado el teclado")
