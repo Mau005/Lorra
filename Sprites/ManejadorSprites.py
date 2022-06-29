@@ -27,6 +27,7 @@ class ManejadorSprites:
                             "secuencia": 3}
                         }
 
+
     def get_objetos(self, id_objeto):
         """
         Ruta de objeto retorna la ruta del path donde se encuentra

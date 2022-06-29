@@ -1,2 +1,7 @@
-lista = [5,5,34,3,234,54,3]
-print(lista[-1])
+
+
+a = 1 + 1
+b = "Juan" + "Pepito"
+
+print(a)
+print(b)
