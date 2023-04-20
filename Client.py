@@ -1,23 +1,26 @@
+from kivy.lang import Builder
 from kivymd.app import MDApp
-from kivy.uix.screenmanager import ScreenManager
 from kivy.clock import Clock
+from kivymd.uix.screenmanager import MDScreenManager
 
 from Ventanas.Juego import Juego
 from Ventanas.Login import Login
 from core.Constantes import FPS
 
 
+Builder.load_file("Ventanas/Login.kv")
 
 class Lorra(MDApp):
     def __init__(self, **kargs):
         super().__init__(**kargs)
 
-        self.manejador = ScreenManager()
-        self.login = Login()
-        self.juego = Juego()
+        self.manejador = MDScreenManager()
+        self.login = Login(name ="login")
+        self.juego = Juego(name="juego")
 
-        #self.manejador.add_widget(self.login)
+
         self.manejador.add_widget(self.juego)
+
         Clock.schedule_interval(self.actualizar, 1/FPS)
         Clock.schedule_interval(self.dibujar, 1 / FPS)
 

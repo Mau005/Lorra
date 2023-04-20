@@ -12,6 +12,8 @@ class ManejadorSprites:
         self.vestimentas = {1: {"ruta": "atlas://Assets/RPG CHARACTERS/Aguy.atlas/",
                                 "secuencia": 1},
                             2: {"ruta": "atlas://Assets/RPG CHARACTERS/Child.atlas/",
+                                "secuencia": 1},
+                            3: {"ruta": "atlas://Assets/RPG CHARACTERS/CowBoy.atlas/",
                                 "secuencia": 1}
                             }
 

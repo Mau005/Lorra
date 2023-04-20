@@ -35,7 +35,7 @@ class Juego(MDScreen):
         self.add_widget(self.maya)
         self.manejadorSprites = ManejadorSprites()
         self.controladorObjetos = ControladorObjetos()
-        self.jugador = Persona(self.manejadorSprites, 'Mau', 'prueba123', 1, 1, 1, 100, 100, 20, 20, 0, 1, '100:100:1',
+        self.jugador = Persona(self.manejadorSprites, 'Mau', 'prueba123', 1, 1, 1, 100, 100, 20, 20, 0, 3, '100:100:1',
                                1, self.pos_defecto, self.tamanio_cuadro)
 
         self.render = Render(self.jugador, self.teclado, self.tamanio_cuadro)
@@ -53,6 +53,18 @@ class Juego(MDScreen):
                    self.tamanio_cuadro))
         self.render.registrar(
             Suelos(objtest, "suelo", self.manejadorSprites.get_objetos(5), [0, self.tamanio_cuadro[1] * 3],
+                   self.tamanio_cuadro))
+        self.render.registrar(
+            Suelos(objtest, "suelo", self.manejadorSprites.get_objetos(5), [0, self.tamanio_cuadro[1] * 5],
+                   self.tamanio_cuadro))
+        self.render.registrar(
+            Suelos(objtest, "suelo", self.manejadorSprites.get_objetos(5), [0, self.tamanio_cuadro[1] * 4],
+                   self.tamanio_cuadro))
+        self.render.registrar(
+            Suelos(objtest, "suelo", self.manejadorSprites.get_objetos(5), [self.tamanio_cuadro[0]*1, self.tamanio_cuadro[1] * 4],
+                   self.tamanio_cuadro))
+        self.render.registrar(
+            Suelos(objtest, "suelo", self.manejadorSprites.get_objetos(5), [self.tamanio_cuadro[0]*1, self.tamanio_cuadro[1] * 5],
                    self.tamanio_cuadro))
 
     def _cerrar_teclado(self, *args):
