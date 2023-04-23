@@ -1,16 +1,21 @@
+from kivy.lang import Builder
+from kivy.properties import ObjectProperty
+from kivy.uix.screenmanager import Screen
 from kivymd.uix.screen import MDScreen
-from kivymd.uix.floatlayout import MDFloatLayout
 from Entidad.Persona import Persona
 from Sprites.ManejadorSprites import ManejadorSprites
 from kivy.core.window import Window
 from Controles.Teclado import Teclado
+from Ventanas.AbstractScreen import AbstractScreen
 from core.Constantes import CANTIDAD_ESPACIOS_X, CANTIDAD_ESPACIOS_Y
 from core.ControladorObjetos import ControladorObjetos
 from Objetos.Suelos import Suelos
 from core.Render import Render
 
+Builder.load_file("Ventanas/juego.kv")
 
-class Juego(MDScreen):
+class Juego(AbstractScreen):
+    maya = ObjectProperty()
     def __init__(self, **kargs):
         super().__init__(size=Window.size, **kargs)
         self.__configuracion_teclado()
@@ -30,9 +35,6 @@ class Juego(MDScreen):
                             self.tamanio_cuadro[1] * int(CANTIDAD_ESPACIOS_Y / 2)]
 
     def __configuracion_ventana(self):
-        self.name = "Juego"
-        self.maya = MDFloatLayout(size=self.size, size_hint=self.size_hint)
-        self.add_widget(self.maya)
         self.manejadorSprites = ManejadorSprites()
         self.controladorObjetos = ControladorObjetos()
         self.jugador = Persona(self.manejadorSprites, 'Mau', 'prueba123', 1, 1, 1, 100, 100, 20, 20, 0, 3, '100:100:1',
@@ -68,7 +70,6 @@ class Juego(MDScreen):
                    self.tamanio_cuadro))
 
     def _cerrar_teclado(self, *args):
-        print("Se ha cerrado el teclado")
         self._teclado.unbind(on_key_down=self._precionar_tecla)
         self._teclado.unbind(on_key_up=self._soltar_tecla)
         self._teclado = None

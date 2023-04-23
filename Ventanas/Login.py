@@ -1,18 +1,15 @@
+from kivy.lang import Builder
 
-from kivymd.uix.behaviors import CommonElevationBehavior
-from kivymd.uix.card import MDCard
-from kivymd.uix.screen import MDScreen
+from Ventanas.AbstractScreen import AbstractScreen
 
+Builder.load_file("Ventanas/Login.kv")
 
-class MDCardPre(MDCard, CommonElevationBehavior):
-    pass
-class Login(MDScreen):
+class Login(AbstractScreen):
     def __init__(self, **kargs):
         super().__init__(**kargs)
 
     def next(self, name, *args):
-        print(f"Que estoy pasando: {name}")
-        self.manager.current = name
+        super().next(name)
     def actualizar(self, *dt):
         pass
 
