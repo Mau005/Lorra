@@ -5,7 +5,7 @@ from Objetos.Suelos import Suelos
 
 class Render(Entidad):
 
-    def __init__(self,jugador, teclado, tamanio_cuadro):
+    def __init__(self, jugador, teclado, tamanio_cuadro):
         super().__init__([0, 0], [0, 0])
         """
         Sistema de capas de renderizado
@@ -15,7 +15,7 @@ class Render(Entidad):
         """
         self.jugador = jugador
         self.teclado = teclado
-        self.__renderizado = {1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8:[]}
+        self.__renderizado = {1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: []}
         self.cambios_canvas = False
         self.tamanio_cuadro = tamanio_cuadro
 
@@ -28,7 +28,6 @@ class Render(Entidad):
             self.jugador.caminar(mover, "izquierda", dt)
         elif self.teclado.get_tecla(100):
             self.jugador.caminar(mover, "derecha", dt)
-
 
     def registrar(self, obj):
         if isinstance(obj, Persona):
@@ -46,9 +45,14 @@ class Render(Entidad):
     def dibujar(self, canvas, dt):
         for capas in range(1, len(self.__renderizado.values()) + 1):
             for elementos in self.__renderizado[capas]:
-                elementos.dibujar(canvas, self.tamanio_cuadro, dt)
+                #(self, canvas, size_bg, pos_bg, dt):
+                pos_bg = elementos.pos
+                pos_bg[1] = self.tamanio_cuadro[1] * pos_bg[1]
+                pos_bg[0] = self.tamanio_cuadro[0] * pos_bg[0]
+                elementos.dibujar(canvas, self.tamanio_cuadro, pos_bg, dt)
+
 
 if __name__ == "__main__":
     test = Render()
 
-    test.dibujar(1,1)
+    test.dibujar(1, 1)

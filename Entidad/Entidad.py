@@ -11,6 +11,9 @@ class Entidad(ABC):
     def actualizar(self, *dt):
         pass
 
+    def __str__(self):
+        return f"Posicion: {self.pos}"
+
     @abstractmethod
-    def dibujar(self, *dt):
+    def dibujar(self, canvas, size_bg, pos_bg, dt):
         pass
